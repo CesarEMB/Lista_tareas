@@ -1,0 +1,32 @@
+<%- include('partials/cabezera.ejs') %>
+
+    <body>
+        <%- include('partials/navbar.ejs') %>
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <form action="/update/<%= data.id %>" method="post">
+
+                                    <div class="form-group">
+                                        <label for="Tarea">Ingrese su tarea</label>
+                                        <input type="text" name="Tarea" value="<%= data.Tarea %> " class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Fecha_tarea">Ingrese la Fecha</label>
+                                        <input type="text" name="Fecha_tarea" value="<%= data.Fecha_tarea %> " class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Editar tarea</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <%- include('partials/navfun.ejs') %>
+
+        </html>

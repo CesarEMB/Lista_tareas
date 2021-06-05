@@ -1,0 +1,85 @@
+<%- include('partials/cabezera.ejs') %>
+
+    <body>
+
+        <%- include('partials/navbar.ejs') %>
+
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <form action="/add" method="post">
+
+                                    <div class="form-group">
+                                        <label for="Tarea">Ingrese su tarea</label>
+                                        <input type="text" name="Tarea" placeholder="Ingrese su tarea" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Fecha_tarea">Ingrese la Fecha</label>
+                                        <input type="text" name="Fecha_tarea" placeholder="Ingrese la Fecha de la tarea" class="form-control">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Guardar tarea</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <table class="table table-bordered table-hover ml-10">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Tarea
+                            </th>
+                            <th>
+                                Fecha
+                            </th>
+
+                            <th>
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) {%>
+                            <% for (var i = 0; i< data.length; i++) { %>
+
+                                <tr>
+                                    <td>
+                                        <%= (i+1) %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Tarea %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Fecha_tarea %>
+                                    </td>
+                                    <td>
+                                        <a href="/delete/<%= data[i].id %> " class="btn btn-danger">Borrar</a>
+                                        <a href="/update/<%= data[i].id %> " class="btn btn-secondary">Editar</a>
+                                        <input type="checkbox" name="validacion" id="check">
+                                        <label for="validacion" class="val">Completado</label>
+                                    </td>
+                                </tr>
+
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <%- include('partials/navfun.ejs') %>
+    </body>
+
+
+    </html>
