@@ -2,7 +2,7 @@
 
     <body>
 
-        <%- include('partials/navbar.ejs') %>
+        <div%- include( 'partials/navbar.ejs') %>
 
             <div class="container p-4 pag ">
                 <div class="row justify-content-center mt-5 ">
@@ -68,7 +68,8 @@
                                     </td>
 
                                     <td class="cuerpo status">
-                                        <%= (Boolean(data[i].status))? "Completado" : "Pendiente" %>
+                                        <%= (Boolean(data[i].status))?  "Completado" :  "Pendiente" %>
+
                                     </td>
 
                                     <td class="botones">
@@ -79,7 +80,7 @@
 
                                         <form action="/update_status/<%= data[i].id %>" method="post" class="check">
                                             <input type="text" name="status" value="<%= (Boolean(data[i].status)) %>" hidden>
-                                            <button type="submit" class="btn btn-success">Completado</button>
+                                            <button type="submit" class="btn btn-success"><%= (Boolean(data[i].status))? "Pendiente" : "Completado" %></button>
                                         </form>
 
                                     </td>
