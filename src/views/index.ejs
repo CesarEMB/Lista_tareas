@@ -29,14 +29,12 @@
                     </div>
                 </div>
             </div>
-            <div class="container mt-5 tareas_med">
+            <div class="container mt-5 tareas_med table-responsive">
                 <table class="table table-bordered table-hover ml-10">
 
                     <thead class="head">
                         <tr>
-                            <th>
-                                ID
-                            </th>
+
                             <th>
                                 Tarea
                             </th>
@@ -45,10 +43,15 @@
                             </th>
 
                             <th>
+                                Estado
+                            </th>
+
+                            <th>
                                 Acciones
                             </th>
                         </tr>
                     </thead>
+
                     <tbody class="check_body">
 
                         <% if (data) {%>
@@ -56,9 +59,7 @@
 
                                 <tr>
 
-                                    <td class="cuerpo">
-                                        <%= (i+1) %>
-                                    </td>
+
                                     <td class="cuerpo">
                                         <%= data[i].Tarea %>
                                     </td>
@@ -66,11 +67,21 @@
                                         <%= data[i].Fecha_tarea %>
                                     </td>
 
+                                    <td class="cuerpo status">
+                                        <%= (Boolean(data[i].status))? "Completado" : "Pendiente" %>
+                                    </td>
+
                                     <td class="botones">
+
                                         <a href="/delete/<%= data[i].id %> " class="btn btn-danger mr-2">Borrar</a>
                                         <a href="/update/<%= data[i].id %> " class="btn btn-secondary mr-2">Editar</a>
-                                        <input type="checkbox" name="validacion" id="check" name="checkbox">
-                                        <label for="validacion" class="val">Completado</label>
+
+
+                                        <form action="/update_status/<%= data[i].id %>" method="post" class="check">
+                                            <input type="text" name="status" value="<%= (Boolean(data[i].status)) %>" hidden>
+                                            <button type="submit" class="btn btn-success">Completado</button>
+                                        </form>
+
                                     </td>
 
                                 </tr>
@@ -78,14 +89,16 @@
                                 <% } %>
                                     <% } %>
 
+
                     </tbody>
 
                 </table>
-            </div>
 
 
 
-            <%- include('partials/navfun.ejs') %>
+
+                <%- include('partials/navfun.ejs') %>
+
     </body>
 
 

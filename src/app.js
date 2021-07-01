@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const mysql = require('mysql');
 const myconnection = require('express-myconnection');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -17,7 +18,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 //middlewares
-app.use(morgan('dev'))
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(express.json());
 app.use(myconnection(mysql, {
     host: 'b1r0us4at1sjkuq8gxmc-mysql.services.clever-cloud.com',
     user: 'u1bhtxbnbgsmfzf0',
@@ -25,6 +28,7 @@ app.use(myconnection(mysql, {
     port: 3306,
     database: 'b1r0us4at1sjkuq8gxmc'
 }, 'single'));
+
 
 app.use(express.urlencoded({ extended: false }));
 

@@ -1,6 +1,7 @@
 <%- include('partials/cabezera.ejs') %>
 
     <body>
+
         <%- include('partials/navbar.ejs') %>
             <div class="container">
                 <div class="row justify-content-center mt-5">
@@ -12,12 +13,12 @@
 
                                     <div class="form-group">
                                         <label for="Tarea">Ingrese su tarea</label>
-                                        <input type="text" name="Tarea" value="<%= data.Tarea %> " class="form-control">
+                                        <input type="text" name="Tarea" value="<%= data.Tarea %> " class="form-control reg">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Fecha_tarea">Ingrese la Fecha</label>
-                                        <input type="text" name="Fecha_tarea" value="<%= data.Fecha_tarea %> " class="form-control">
+                                        <input type="date" name="Fecha_tarea" value="<%= data.Fecha_tarea %> " class="form-control reg">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Editar tarea</button>
                                 </form>
@@ -26,6 +27,7 @@
                     </div>
                 </div>
             </div>
+
     </body>
     <%- include('partials/navfun.ejs') %>
 

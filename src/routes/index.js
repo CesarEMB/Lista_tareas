@@ -13,4 +13,7 @@ router.get('/update/:id', customerController.edit);
 
 router.post('/update/:id', customerController.update);
 
+router.post('/update_status/:id', customerController.update_status);
+
+
 module.exports = router;
